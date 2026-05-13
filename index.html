@@ -169,42 +169,20 @@
                     </div>
                 </div>
                 
-                <!-- 右側：イラストレーション的表現（ペイント風） -->
-                <div class="relative h-[400px] flex items-center justify-center hidden md:flex">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <!-- スプラトゥーン風のインクの飛び散り (Blob) -->
-                        <svg viewBox="0 0 200 200" class="absolute w-72 h-72 text-pink-400 opacity-60 transform -translate-x-12 -translate-y-8 animate-pulse" fill="currentColor">
-                            <path d="M45.7,-76.3C58.9,-69.3,69.2,-55.4,78.2,-41.2C87.3,-27,95.1,-13.5,94.2,-0.5C93.3,12.5,83.7,25,74.7,37.3C65.7,49.6,57.3,61.7,45.5,70.5C33.7,79.3,18.5,84.8,3.2,79.5C-12.1,74.2,-27.3,57.9,-41.8,47C-56.3,36.1,-70,30.6,-78.7,19.8C-87.4,9,-91.1,-7.1,-87.3,-21.2C-83.5,-35.3,-72.2,-47.4,-59.5,-55.1C-46.8,-62.8,-32.7,-66,-19.1,-70.6C-5.5,-75.2,7.5,-81.2,20.5,-83.4C33.5,-85.6,46.5,-83.9,45.7,-76.3Z" transform="translate(100 100) scale(1.1)" />
-                        </svg>
-                        <svg viewBox="0 0 200 200" class="absolute w-64 h-64 text-blue-400 opacity-60 transform translate-x-16 translate-y-12 animate-pulse animation-delay-1000" fill="currentColor">
-                            <path d="M39.9,-65.4C52.1,-58.5,62.6,-47.5,70.4,-34.5C78.2,-21.5,83.3,-6.5,81.1,7.2C78.9,20.9,69.4,33.3,59.3,44C49.2,54.7,38.5,63.7,26,69.1C13.5,74.5,-0.8,76.3,-14.8,74.2C-28.8,72.1,-42.5,66.1,-53.4,56.5C-64.3,46.9,-72.4,33.7,-76.3,19.4C-80.2,5.1,-79.9,-10.3,-73.8,-23.5C-67.7,-36.7,-55.8,-47.7,-43.1,-54.8C-30.4,-61.9,-17,-65.1,-2.4,-61.6C12.2,-58.1,27.7,-72.3,39.9,-65.4Z" transform="translate(100 100)" />
-                        </svg>
-                        
-                        <!-- 小さなインクの飛沫 -->
-                        <div class="absolute top-10 left-20 w-4 h-4 bg-yellow-400 rounded-full"></div>
-                        <div class="absolute bottom-16 right-10 w-3 h-3 bg-pink-500 rounded-full"></div>
-                        <div class="absolute top-32 right-24 w-5 h-5 bg-purple-500 rounded-full"></div>
+                <!-- 右側：抽象的でモダンなインテリア表現 -->
+                <div class="relative h-[450px] w-full hidden md:flex items-center justify-center">
+                    <!-- 浮遊するカラーパレット -->
+                    <div class="absolute top-20 right-20 w-16 h-16 bg-pink-400 rounded-full shadow-lg border-4 border-white animate-[bounce_4s_infinite]"></div>
+                    <div class="absolute top-32 left-16 w-12 h-12 bg-[#d6c3a3] rounded-full shadow-lg border-4 border-white animate-[bounce_5s_infinite_0.5s]"></div>
+                    <div class="absolute bottom-24 right-12 w-20 h-20 bg-[#2563eb] rounded-full shadow-lg border-4 border-white animate-[bounce_6s_infinite_1s]"></div>
 
-                        <!-- 脚立とペイントローラー -->
-                        <div class="relative z-10 flex items-center justify-center">
-                            <!-- ペイントローラー -->
-                            <div class="absolute -top-12 -right-8 transform rotate-12 z-20">
-                                <i data-lucide="roller-coaster" class="w-20 h-20 text-gray-800 drop-shadow-lg"></i>
-                                <div class="absolute top-4 left-4 w-12 h-6 bg-pink-400 rounded-full blur-[2px] opacity-80 mix-blend-multiply"></div>
-                            </div>
-                            
-                            <!-- 脚立シルエット -->
-                            <div class="relative w-48 h-64 flex items-end">
-                                <svg viewBox="0 0 24 24" class="w-full h-full text-black drop-shadow-2xl" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 22 L10 2 L14 2 L20 22"/>
-                                    <path d="M5.5 15 L18.5 15"/>
-                                    <path d="M7 8 L17 8"/>
-                                </svg>
-                                <!-- 脚立に塗られたインク -->
-                                <div class="absolute top-[35%] left-[32%] w-4 h-12 bg-pink-500 rounded-full"></div>
-                                <div class="absolute top-[65%] right-[32%] w-4 h-10 bg-blue-500 rounded-full"></div>
-                            </div>
-                        </div>
+                    <!-- メインの脚立シルエット -->
+                    <div class="relative z-10 w-40 h-56 flex items-end mb-8 transform hover:scale-105 transition-transform duration-700">
+                        <svg viewBox="0 0 24 24" class="w-full h-full text-black drop-shadow-xl" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 22 L10 2 L14 2 L20 22"/>
+                            <path d="M5.5 15 L18.5 15"/>
+                            <path d="M7 8 L17 8"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -250,11 +228,13 @@
                         <!-- 1. 子供部屋 -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パス（例: ./images/user1.jpg）に変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">mama_k_room</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パス（例: ./images/post1.jpg）に変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="子供部屋">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#f472b6]"></span> PINK × SKYBLUE
@@ -276,11 +256,13 @@
                         <!-- 2. モダンオフィス -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">design_office_t</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="オフィス">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#27272a]"></span> BLACK × MATTE
@@ -302,11 +284,13 @@
                         <!-- 3. アパレルショップ -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">vintage_koenji</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="アパレル">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#d6c3a3]"></span> BEIGE × SILVER
@@ -328,11 +312,13 @@
                         <!-- 4. サッカー趣味部屋 -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">blue_supporter12</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1518605368461-1e1e38ce7195?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="サッカー">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#2563eb]"></span> BLUE × BLACK
@@ -354,11 +340,13 @@
                         <!-- 5. ガレージ -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">ken_garage_life</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="ガレージ">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#eab308]"></span> YELLOW × BLACK
@@ -380,11 +368,13 @@
                         <!-- 6. キャンプ -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">camp_lovers_w</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1504280390227-351eb1432f83?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="キャンプ">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#22c55e]"></span> GREEN × BROWN
@@ -407,11 +397,13 @@
                         <!-- 1. 子供部屋 -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">mama_k_room</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1540479859555-17af45c78602?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="子供部屋">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#f472b6]"></span> PINK × SKYBLUE
@@ -433,11 +425,13 @@
                         <!-- 2. モダンオフィス -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">design_office_t</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="オフィス">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#27272a]"></span> BLACK × MATTE
@@ -459,11 +453,13 @@
                         <!-- 3. アパレルショップ -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">vintage_koenji</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="アパレル">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#d6c3a3]"></span> BEIGE × SILVER
@@ -485,11 +481,13 @@
                         <!-- 4. サッカー趣味部屋 -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">blue_supporter12</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1518605368461-1e1e38ce7195?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="サッカー">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#2563eb]"></span> BLUE × BLACK
@@ -511,11 +509,13 @@
                         <!-- 5. ガレージ -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">ken_garage_life</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="ガレージ">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#eab308]"></span> YELLOW × BLACK
@@ -537,11 +537,13 @@
                         <!-- 6. キャンプ -->
                         <div class="w-80 bg-white border border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] overflow-hidden shrink-0">
                             <div class="p-4 flex items-center gap-3">
+                                <!-- ▼▼ ユーザーアイコン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=facearea&facepad=2&w=100&h=100&q=80" class="w-8 h-8 rounded-full object-cover" alt="user">
                                 <span class="text-sm font-bold text-gray-800">camp_lovers_w</span>
                                 <i data-lucide="more-horizontal" class="w-4 h-4 text-gray-300 ml-auto"></i>
                             </div>
                             <div class="w-full h-56 bg-gray-100 relative">
+                                <!-- ▼▼ 投稿メイン画像：ここをご自身の画像パスに変更してください ▼▼ -->
                                 <img src="https://images.unsplash.com/photo-1504280390227-351eb1432f83?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="キャンプ">
                                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-[10px] font-bold text-gray-700 flex items-center gap-1.5 shadow-sm">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#22c55e]"></span> GREEN × BROWN
@@ -585,7 +587,6 @@
                     さあ、あなたの一台を。
                 </h2>
                 <p class="text-gray-500 mb-10 font-medium leading-relaxed text-sm md:text-base">
-                    ブラウザ上で完結する直感的なシミュレーター。<br>
                     色、質感、高さを組み合わせて、あなたの空間に最適な脚立を。<br>
                     AIによる特注カラー生成機能も搭載。特別なアプリは不要です。
                 </p>
@@ -598,26 +599,40 @@
         </section>
 
         <!-- セクション5: フッター -->
-        <footer class="snap-start shrink-0 h-screen w-full bg-white text-gray-500 py-16 px-6 flex flex-col items-center justify-center text-center">
-            <div class="mb-6 opacity-30">
-                <svg viewBox="0 0 120 160" class="w-12 h-12 mx-auto text-black">
-                     <g stroke="currentColor" stroke-width="12" stroke-linecap="round">
-                         <line x1="50" y1="20" x2="20" y2="140"/>
-                         <line x1="70" y1="20" x2="100" y2="140"/>
-                         <line x1="38" y1="65" x2="82" y2="65"/>
-                         <line x1="28" y1="105" x2="92" y2="105"/>
-                         <line x1="45" y1="20" x2="75" y2="20" stroke-width="16"/>
-                     </g>
-                </svg>
+        <footer class="snap-start shrink-0 h-screen w-full bg-neutral-50 text-gray-600 py-16 px-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
+            <!-- 長谷川工業レッドのアクセント -->
+            <div class="absolute top-0 left-0 w-full h-1 bg-red-600"></div>
+            
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-red-600 rounded-full mix-blend-multiply filter blur-[80px] opacity-10 pointer-events-none"></div>
+
+            <div class="mb-8">
+                <!-- ロゴを少しスタイリッシュに -->
+                <div class="w-16 h-16 bg-white shadow-md rounded-2xl flex items-center justify-center mx-auto mb-4 border border-gray-100">
+                    <svg viewBox="0 0 120 160" class="w-8 h-8 text-red-600">
+                         <g stroke="currentColor" stroke-width="12" stroke-linecap="round">
+                             <line x1="50" y1="20" x2="20" y2="140"/>
+                             <line x1="70" y1="20" x2="100" y2="140"/>
+                             <line x1="38" y1="65" x2="82" y2="65"/>
+                             <line x1="28" y1="105" x2="92" y2="105"/>
+                             <line x1="45" y1="20" x2="75" y2="20" stroke-width="16"/>
+                         </g>
+                    </svg>
+                </div>
+                <div class="font-bold tracking-widest text-gray-800">乗ればわかる頼もしさに</div>
             </div>
+            
             <p class="text-base mb-12 max-w-lg mx-auto leading-relaxed text-gray-500">
                 高い安全性とデザイン性を兼ね備えたプロフェッショナル向け脚立や、ご家庭向けのスタイリッシュなラインナップまで。<br><br>長谷川工業の全製品情報はこちらからご覧いただけます。
             </p>
             <a href="https://www.hasegawa-kogyo.co.jp/" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 px-10 py-5 border-2 border-gray-200 text-gray-700 rounded-full hover:bg-black hover:text-white hover:border-black transition-all text-sm font-bold group">
+                class="inline-flex items-center gap-2 px-10 py-5 border-2 border-red-600 text-red-600 bg-white rounded-full hover:bg-red-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-red-600/20 text-sm font-bold group">
                 長谷川工業 公式サイトへ
                 <i data-lucide="external-link" class="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
             </a>
+            
+            <div class="mt-16 text-xs text-gray-400 font-quicksand">
+                &copy; HASEGAWA KOGYO CO., LTD. All Rights Reserved.
+            </div>
         </footer>
     </div>
 
@@ -957,7 +972,9 @@
             { id: 'studio', name: '', url: '' }, // スタジオは名前を非表示
             { id: 'home', name: 'リビング', url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80' }, 
             { id: 'office', name: 'オフィス', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80' },
-            { id: 'shop', name: 'ショップ', url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80' }
+            { id: 'shop', name: 'ショップ', url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80' },
+            { id: 'garage', name: 'ガレージ', url: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1000&q=80' },
+            { id: 'camp', name: 'キャンプ', url: 'https://images.unsplash.com/photo-1504280390227-351eb1432f83?auto=format&fit=crop&w=1000&q=80' }
         ];
 
         const GRIP_OPTIONS = [
@@ -1436,7 +1453,10 @@
         function resetConfig() { state.steps = INITIAL_STATE.steps; state.textureType = INITIAL_STATE.textureType; state.bodyColor = INITIAL_STATE.bodyColor; state.stepColor = INITIAL_STATE.stepColor; state.oneTouchBarColor = INITIAL_STATE.oneTouchBarColor; state.gripType = INITIAL_STATE.gripType; updateAll(); }
         
         // --- AI Color Generation Logic ---
-        const apiKey = ""; // Runtime will provide this
+        // TODO: GitHub Pages等で公開してブラウザ上で動かす場合は、Google AI StudioでAPIキーを取得し、以下の変数に入力してください。
+        // 例: const apiKey = "AIzaSyYourApiKeyHere...";
+        // ※現在のプレビュー環境では自動的にキーが提供されるため空文字で動作します。
+        const apiKey = ""; 
 
         async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
             try {
@@ -1487,9 +1507,10 @@
                 }
             };
 
-            // プレビュー環境専用のモデルに戻しました
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
+            // プレビュー環境用と、公開時のGemini 2.5 Flash用のモデル名を切り替え
+            const modelName = apiKey === "" ? "gemini-2.5-flash-preview-09-2025" : "gemini-2.5-flash";
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            
             try {
                 const result = await fetchWithRetry(url, {
                     method: 'POST',
