@@ -967,14 +967,14 @@
             { id: 'beige', name: 'ベージュ', value: '#d6c3a3', isPremium: true }
         ];
 
-        // 背景をスタジオとアップロードされた画像に設定 (プレビュー用にUnsplashの画像URLに変更)
+        // 背景をスタジオとアップロードされた画像に設定
         const BACKGROUNDS = [
             { id: 'studio', name: '', url: '' }, // スタジオは名前を非表示
-            { id: 'home', name: 'リビング', url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80' }, 
-            { id: 'office', name: 'オフィス', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80' },
-            { id: 'shop', name: 'ショップ', url: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80' },
-            { id: 'garage', name: 'ガレージ', url: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1000&q=80' },
-            { id: 'camp', name: 'キャンプ', url: 'https://images.unsplash.com/photo-1504280390227-351eb1432f83?auto=format&fit=crop&w=1000&q=80' }
+            { id: 'home', name: 'リビング', url: './リビング.png' }, 
+            { id: 'office', name: 'オフィス', url: './オフィス.png' },
+            { id: 'shop', name: 'ショップ', url: './ショップ.png' },
+            { id: 'garage', name: 'ガレージ', url: './ガレージ.png' },
+            { id: 'camp', name: 'キャンプ', url: './アウトドア.png' }
         ];
 
         const GRIP_OPTIONS = [
@@ -1456,7 +1456,7 @@
         // TODO: GitHub Pages等で公開してブラウザ上で動かす場合は、Google AI StudioでAPIキーを取得し、以下の変数に入力してください。
         // 例: const apiKey = "AIzaSyYourApiKeyHere...";
         // ※現在のプレビュー環境では自動的にキーが提供されるため空文字で動作します。
-        const apiKey = ""; 
+        const apiKey = "AIzaSyDBdDp4zMdypeNCbfuu39qfoaPnBJTjWdo";
 
         async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
             try {
