@@ -1461,10 +1461,7 @@
         function resetConfig() { state.steps = INITIAL_STATE.steps; state.textureType = INITIAL_STATE.textureType; state.bodyColor = INITIAL_STATE.bodyColor; state.stepColor = INITIAL_STATE.stepColor; state.oneTouchBarColor = INITIAL_STATE.oneTouchBarColor; state.gripType = INITIAL_STATE.gripType; updateAll(); }
         
         // --- AI Color Generation Logic ---
-        // TODO: GitHub Pages等で公開してブラウザ上で動かす場合は、Google AI StudioでAPIキーを取得し、以下の変数に入力してください。
-        // 例: const apiKey = "AIzaSyYourApiKeyHere...";
-        // ※現在のプレビュー環境では自動的にキーが提供されるため空文字で動作します。
-        const apiKey = "AIzaSyDMGIjW5f4Dk1gxXDYA0XQigd5cEf0JfsU";
+        const aiEndpoint = "/ai";
 
         async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
             try {
@@ -1515,9 +1512,7 @@
                 }
             };
 
-            // プレビュー環境用と、公開時のGemini 2.5 Flash用のモデル名を切り替え
-            const modelName = apiKey === "" ? "gemini-2.5-flash-preview-09-2025" : "gemini-2.5-flash";
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const url = aiEndpoint;
             
             try {
                 const result = await fetchWithRetry(url, {
