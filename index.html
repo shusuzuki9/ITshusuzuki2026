@@ -1461,7 +1461,7 @@
         function resetConfig() { state.steps = INITIAL_STATE.steps; state.textureType = INITIAL_STATE.textureType; state.bodyColor = INITIAL_STATE.bodyColor; state.stepColor = INITIAL_STATE.stepColor; state.oneTouchBarColor = INITIAL_STATE.oneTouchBarColor; state.gripType = INITIAL_STATE.gripType; updateAll(); }
         
         // --- AI Color Generation Logic ---
-        const aiEndpoint = "/ai";
+        const aiEndpoint = "/api/chat";
 
         async function fetchWithRetry(url, options, retries = 5, delay = 1000) {
             try {
