@@ -91,41 +91,36 @@ function postJson(url, payload, headers = {}) {
 
 app.post('/api/chat', async (req, res) => {
     try {
-        if (!API_KEY) {
-            return res.status(500).json({ error: 'API_KEY is not configured on the server' });
-        }
+        if (!API_KEY) return res.status(500).json({ error: 'API_KEY is not configured' });
+        if (!req.body || !req.body.prompt) return res.status(400).json({ error: 'Prompt is required' });
 
-        if (!req.body || typeof req.body !== 'object') {
-            return res.status(400).json({ error: 'Invalid request body' });
-        }
+        // OpenAIの通信先URL
+        const url = 'https://api.openai.com/v1/chat/completions';
+        
+        // OpenAI向けのリクエストデータ
+        const payload = {
+            model: "gpt-4o-mini", // 高速・高精度・低価格なモデル
+            messages: [
+                {
+                    role: "system",
+                    content: "あなたはプロのプロダクトデザイナー兼カラーコーディネーターです。ユーザーのテーマに基づいて脚立の3パーツのカラーをデザインします。必ずJSON形式で、bodyColor, stepColor, otbColor の3つのキーを持つオブジェクトを返してください。値は # から始まるHEXカラーコードにしてください。"
+                },
+                {
+                    role: "user",
+                    content: `テーマ：「${req.body.prompt}」\nこのテーマから連想される色を使用して、3色をデザインしてください。`
+                }
+            ],
+            response_format: { type: "json_object" } // 必ずJSONで返すよう強制
+        };
 
-        const model = encodeURIComponent(GEMINI_MODEL);
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
-        const headers = {};
-        if (API_KEY) {
-            headers.Authorization = `Bearer ${API_KEY}`;
-        }
-        const geminiResponse = await postJson(url, req.body, headers);
-        const data = geminiResponse.data;
+        const headers = { 'Authorization': `Bearer ${API_KEY}` };
+        const aiResponse = await postJson(url, payload, headers);
 
-        if (!geminiResponse.ok) {
-            return res.status(geminiResponse.statusCode).json({
-                error: data.error?.message || 'Gemini API request failed',
-                details: data
-            });
-        }
-
-        return res.json(data);
+        if (!aiResponse.ok) return res.status(aiResponse.statusCode).json(aiResponse.data);
+        return res.json(aiResponse.data);
+        
     } catch (error) {
         console.error('AI proxy error:', error);
         return res.status(500).json({ error: error.message || 'Internal server error' });
     }
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
 });

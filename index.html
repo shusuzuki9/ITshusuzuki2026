@@ -1491,27 +1491,7 @@
             promptInput.disabled = true;
             errorMsg.classList.add('hidden');
 
-            const payload = {
-                contents: [{
-                    parts: [{ text: `テーマ：「${prompt}」\nこのテーマから連想される色を使用して、脚立のパーツ（本体、踏み場、ワンタッチバー）の3色をデザインしてください。` }]
-                }],
-                systemInstruction: {
-                    parts: [{ text: "あなたはプロのプロダクトデザイナー兼カラーコーディネーターです。ユーザーのテーマに基づいて脚立の3パーツのカラーをデザインします。\n- 国（フランスなど）、動物（パンダなど）、スポーツチーム、企業名・飲食店など具体的な名詞の場合は、その対象を象徴する明確なテーマカラー（国旗の色やチームカラーなど）を忠実にHEXコードで再現してください。\n- 「春」「キラキラ」など抽象的な言葉の場合は、あなたの感性でテーマに沿った魅力的なカラーリングを提案してください。\n必ずJSON形式で、bodyColor, stepColor, otbColor の3つのキーを持つオブジェクトを返してください。値は # から始まるHEXカラーコードです。" }]
-                },
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            bodyColor: { type: "STRING" },
-                            stepColor: { type: "STRING" },
-                            otbColor: { type: "STRING" }
-                        },
-                        required: ["bodyColor", "stepColor", "otbColor"]
-                    }
-                }
-            };
-
+        const payload = { prompt: prompt };
             const url = aiEndpoint;
             
             try {
@@ -1521,10 +1501,8 @@
                     body: JSON.stringify(payload)
                 });
 
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text
-                    || result.candidates?.[0]?.content?.text
-                    || result.candidates?.[0]?.text
-                    || result.text;
+                // OpenAIのレスポンス形式に合わせてテキストを取り出す
+                const text = result.choices?.[0]?.message?.content;
 
                 if (!text) {
                     throw new Error('AIの応答が見つかりませんでした。');
@@ -1534,18 +1512,18 @@
                 try {
                     colors = JSON.parse(text.trim());
                 } catch (parseError) {
+                    // 万が一JSON形式が崩れていた場合の予備処理
                     const normalized = text.replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/\r?\n/g, ' ');
                     const extracted = {};
                     const regex = /(bodyColor|stepColor|otbColor)\s*[:=]\s*(?:"?)#?([0-9A-Fa-f]{6})(?:"?)/g;
                     let match;
                     while ((match = regex.exec(normalized)) !== null) {
-                        const key = match[1];
-                        extracted[key] = `#${match[2].toUpperCase()}`;
+                        extracted[match[1]] = `#${match[2].toUpperCase()}`;
                     }
                     if (extracted.bodyColor && extracted.stepColor && extracted.otbColor) {
                         colors = extracted;
                     } else {
-                        throw new Error(`AIの応答をJSONに解析できませんでした: ${text}`);
+                        throw new Error(`AIの応答を解析できませんでした: ${text}`);
                     }
                 }
 
