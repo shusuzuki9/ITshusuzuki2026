@@ -36,10 +36,11 @@ const allowedOrigins = new Set([
     'http://localhost:3000',
     'http://127.0.0.1:3000'
 ]);
+const localOriginRegex = /^https?:\/\/(?:localhost|127\.0\.0\.1)(:\d+)?$/;
 
 app.use(cors({
     origin(origin, callback) {
-        if (!origin || allowedOrigins.has(origin)) {
+        if (!origin || allowedOrigins.has(origin) || localOriginRegex.test(origin)) {
             return callback(null, true);
         }
         return callback(new Error('Not allowed by CORS'));

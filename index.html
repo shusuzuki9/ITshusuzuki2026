@@ -1521,21 +1521,35 @@
                     body: JSON.stringify(payload)
                 });
 
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                if (text) {
-                    const colors = JSON.parse(text);
-                    state.bodyColor = colors.bodyColor;
-                    state.stepColor = colors.stepColor;
-                    state.oneTouchBarColor = colors.otbColor;
-                    updateAll();
-                    // AIタブ内で画面上部にスクロールして色を見せる
-                    document.querySelector('.custom-scrollbar').scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    throw new Error("No text generated");
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text
+                    || result.candidates?.[0]?.content?.text
+                    || result.candidates?.[0]?.text
+                    || result.text;
+
+                if (!text) {
+                    throw new Error('AIの応答が見つかりませんでした。');
                 }
+
+                let colors;
+                try {
+                    colors = JSON.parse(text.trim());
+                } catch (parseError) {
+                    throw new Error(`AIの応答をJSONに解析できませんでした: ${text}`);
+                }
+
+                if (!colors.bodyColor || !colors.stepColor || !colors.otbColor) {
+                    throw new Error(`AIの応答に必要な色が含まれていません: ${text}`);
+                }
+
+                state.bodyColor = colors.bodyColor;
+                state.stepColor = colors.stepColor;
+                state.oneTouchBarColor = colors.otbColor;
+                updateAll();
+                // AIタブ内で画面上部にスクロールして色を見せる
+                document.querySelector('.custom-scrollbar').scrollTo({ top: 0, behavior: 'smooth' });
             } catch (error) {
-                console.error(error);
-                errorMsg.innerText = "カラーの作成に失敗しました。少し時間をおいて再度お試しください。";
+                console.error('AI Custom Error:', error);
+                errorMsg.innerText = error.message || "カラーの作成に失敗しました。少し時間をおいて再度お試しください。";
                 errorMsg.classList.remove('hidden');
             } finally {
                 btn.innerHTML = '作成する';
