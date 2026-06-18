@@ -28,7 +28,7 @@ loadEnvFile();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.API_KEY || process.env.AI_KEY || process.env.OPENAI_API_KEY;
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 const allowedOrigins = new Set([
     'https://itshusuzuki.com',
@@ -50,14 +50,15 @@ app.use(cors({
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname), { dotfiles: 'ignore' }));
 
-function postJson(url, payload) {
+function postJson(url, payload, headers = {}) {
     return new Promise((resolve, reject) => {
         const body = JSON.stringify(payload);
         const request = https.request(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(body)
+                'Content-Length': Buffer.byteLength(body),
+                ...headers
             }
         }, (response) => {
             let responseBody = '';
@@ -99,8 +100,12 @@ app.post('/api/chat', async (req, res) => {
         }
 
         const model = encodeURIComponent(GEMINI_MODEL);
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
-        const geminiResponse = await postJson(url, req.body);
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+        const headers = {};
+        if (API_KEY) {
+            headers.Authorization = `Bearer ${API_KEY}`;
+        }
+        const geminiResponse = await postJson(url, req.body, headers);
         const data = geminiResponse.data;
 
         if (!geminiResponse.ok) {
