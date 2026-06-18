@@ -1534,7 +1534,19 @@
                 try {
                     colors = JSON.parse(text.trim());
                 } catch (parseError) {
-                    throw new Error(`AIの応答をJSONに解析できませんでした: ${text}`);
+                    const normalized = text.replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/\r?\n/g, ' ');
+                    const extracted = {};
+                    const regex = /(bodyColor|stepColor|otbColor)\s*[:=]\s*(?:"?)#?([0-9A-Fa-f]{6})(?:"?)/g;
+                    let match;
+                    while ((match = regex.exec(normalized)) !== null) {
+                        const key = match[1];
+                        extracted[key] = `#${match[2].toUpperCase()}`;
+                    }
+                    if (extracted.bodyColor && extracted.stepColor && extracted.otbColor) {
+                        colors = extracted;
+                    } else {
+                        throw new Error(`AIの応答をJSONに解析できませんでした: ${text}`);
+                    }
                 }
 
                 if (!colors.bodyColor || !colors.stepColor || !colors.otbColor) {
